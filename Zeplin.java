@@ -1,3 +1,5 @@
+package furkanmetin;
+
 public class Zeplin {
     int yolcu_sayisi;
     int manevra;
