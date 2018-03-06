@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package furkanmetin;
 
 import java.io.BufferedReader;
@@ -20,21 +15,21 @@ public class FurkanMetin {
     
     private static List<Vertex> nodes;
     private static List<Edge> edges;
+    static String bas_id;
+    static String bit_id;
 
     public static void main(String[] args)
     {
         nodes = new ArrayList<Vertex>();
         edges = new ArrayList<Edge>();
-          int kayit_say = dosya_satir_say();
-//            sehir[] il= new sehir[kayit_say];
-        Vertex[] sehir = new Vertex[kayit_say];
-            
-            String kayit ;
+        int kayit_say = dosya_satir_say();
+        Vertex[] sehir = new Vertex[kayit_say]; // Dosyadaki kayıt sayısı kadar nesne oluşturduk...
+        String kayit ;
+        
+        // Burada şehirlerin enlem, boylam, plaka, isim, yükseklik bilgileri dosyadan alınıp 
+        // Vertex sınıfından mevcut kayıt kadar nesne oluşturuldu
+        // Ayrıca Yukarıda tanımlanan düğüm değişkenine eklendi.Daha sonra graf yapısına eklenecek...
         try{
-//            File dosya = new File("C:\\Users\\Furkan\\Desktop\\lat long.txt");
-//            Scanner oku = new Scanner(dosya);
-//            String satir ;
-//            satir = oku.nextLine(); 
             BufferedReader reader = null;
             reader = new BufferedReader(new FileReader("C:\\Users\\Furkan\\Desktop\\lat long1.txt"));
             String satir = reader.readLine();
@@ -64,9 +59,49 @@ public class FurkanMetin {
             System.out.println("Dosya veri girdisinde hata olustu.");
         }
     
-        for(Vertex n : sehir){
-            System.out.println(n);
+        // Test amaçlı bi kullanım... nesnelerin doğruluğu için ekran çıktısı alındı...
+
+//        for(Vertex n : sehir){
+//            System.out.println(n);
+//        }
+     
+        // Burada komsu şehirler okutulmaya çalışıldı...   
+        try{
+            BufferedReader reader = null;
+            reader = new BufferedReader(new FileReader("C:\\Users\\Furkan\\Desktop\\komsu.txt"));
+            String satir = reader.readLine();
+            String[] blok;
+            int i=0;
+            while (satir!=null) {
+                satir = reader.readLine();
+                // Son satır null olduğu için hatayı bertaraf etmek amaçlı alınan bi önlem ...
+                if(satir!=null){
+                    blok = satir.split(",");
+                    System.out.println((i+1)+" . satir : "+blok.length); 
+                    
+                    // Devamı reklamlardan sonra :))
+                    
+//                for(int j=0;i<blok.length;j++){
+//                    
+//                }
+//                System.out.println(satir);
+//                System.out.println(isim+" "+en+" "+boy+" "+plk+" "+yuk+" ");
+                  
+                
+                i++;
+                
+                }
+            }
+        }catch(FileNotFoundException e){
+            System.out.print("Dosya bulunamadi veya acilamadi.");
+        }catch(IOException e){
+            System.out.println("Dosya veri girdisinde hata olustu.");
         }
+        
+        
+        
+        // Algoritma test edildi... Az dekorasyon yapılacak..
+        
 //        nodes = new ArrayList<Vertex>();
 //        edges = new ArrayList<Edge>();
 //        for (int i = 0; i < 11; i++) {
@@ -108,21 +143,24 @@ public class FurkanMetin {
 //        for (Vertex vertex : path) {
 //            System.out.println(vertex);
 //        }
-        
- 
-    }  
-
-    
+//        
+// 
+//    }  
+//
+//    
 //    private static void addLane(String laneId, int sourceLocNo, int destLocNo,int duration) {
 //        Edge lane = new Edge(laneId,nodes.get(sourceLocNo), nodes.get(destLocNo), duration );
 //        edges.add(lane);
 //    }
+    }
+    
+    // Belirtilen dosyadaki satır bilgisi çekildi...
     private static int dosya_satir_say(){
          int lineNumber = 0;
          try
          {
          BufferedReader reader = null;
-         reader = new BufferedReader(new FileReader("C:\\Users\\Furkan\\Desktop\\lat long.txt"));
+         reader = new BufferedReader(new FileReader("C:\\Users\\Furkan\\Desktop\\lat long1.txt"));
          String satir = reader.readLine();
             satir = reader.readLine();
              while (satir!=null) {
@@ -136,5 +174,5 @@ public class FurkanMetin {
      
     }
     
-    
+  
 }
