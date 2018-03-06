@@ -1,3 +1,5 @@
+package furkanmetin;
+
 import java.util.List;
 
 public class Graph {
