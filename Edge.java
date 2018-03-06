@@ -1,3 +1,5 @@
+package furkanmetin;
+
 public class Edge {
    
     private final String id;
@@ -33,6 +35,8 @@ public class Edge {
     public int getWeight() {
         return weight;
     }
+	// Bu metod sonradan eklendi.. Amacı iki şehir arası uzaklığı hesaplamak (enlem ve boylamlar ile). Daha Düzenleme yapılacak 
+	// tam değil..
     public double calculateWeight(Vertex source,Vertex destination){
         int weight =0 ;
         double lat1 = source.latitude;
